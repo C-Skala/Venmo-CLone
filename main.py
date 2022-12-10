@@ -4,13 +4,13 @@ user_one = {
 'Full_name': 'Geralt Riverierre',
 'username': 'witcher',
 'password': 'yennifer',
-'account_balance': '10000',
+'account_balance': 10000,
 'connected_banks': 'yes',
 'Banks':[
-    #('Vivaldi Bank', {'balance': 5000}),
-    #('Celadon Bank', {'balance': 5000}),
-    ('Vivaldi Bank',  5000),
-    ('Celadon Bank', 5000),
+    ('Vivaldi Bank', {'balance': 5000}),
+    ('Celadon Bank', {'balance': 5000}),
+    #('Vivaldi Bank',  5000),
+    #('Celadon Bank', 5000),
 ],
 }
 
@@ -18,13 +18,13 @@ user_two = {
 'Full_name': 'ash ketchum',
 'username': 'pokeMAN',
 'password': 'misty',
-'account_balance': '8000',
+'account_balance': 8000,
 'connected_banks': 'yes',
 'Banks':[
-    #('Vivaldi Bank', {'balance': 4000}),
-    #('Celadon Bank', {'balance': 4000}),
-    ('Vivaldi Bank', 4000),
-    ('Celadon Bank', 4000),
+    ('Vivaldi Bank', {'balance': 4000}),
+    ('Celadon Bank', {'balance': 4000}),
+    #('Vivaldi Bank', 4000),
+    #('Celadon Bank', 4000),
 ],
 }
 
@@ -68,5 +68,52 @@ def user_check():
             password_check = input('please enter your password   ')
             print(" ")
 
+def balance_txfr():
+    give_money = False
+    while give_money == False:
+        xfer_inq = input('would you like to transfer money to ' + user_two['Full_name']+'?')
+        if xfer_inq == "y":
+            give_money = True
+            txfer_done = False
+            while txfer_done == False:
+                ammnt_to_txfr = int(input('how much would you like to give? '))
+                if ammnt_to_txfr > user_one['account_balance']:
+                    print('sorry you dont have that much coin yet')
+                    #ammnt_to_txfr = input('how much would you like to give? ')
+                elif ammnt_to_txfr <= user_one['account_balance']:
+                    user_one['account_balance'] -= ammnt_to_txfr
+                    user_two['account_balance'] += ammnt_to_txfr
+                    txfer_done = True
+        elif xfer_inq == 'n':
+            print('ok keep your coin')
+            return
+        else:
+            print('please type y or n')
+
+def balance_txfr_again():
+    give_money = False
+    while give_money == False:
+        xfer_inq = input('do you want to transfer any more money to ' + user_two['Full_name']+'?')
+        if xfer_inq == "y":
+            give_money = True
+            txfer_done = False
+            while txfer_done == False:
+                ammnt_to_txfr = int(input('how much would you like to give? '))
+                if ammnt_to_txfr > user_one['account_balance']:
+                    print('sorry you dont have that much coin yet')
+                    #ammnt_to_txfr = input('how much would you like to give? ')
+                elif ammnt_to_txfr <= user_one['account_balance']:
+                    user_one['account_balance'] -= ammnt_to_txfr
+                    user_two['account_balance'] += ammnt_to_txfr
+                    txfer_done = True
+        elif xfer_inq == 'n':
+            print('ok keep your coin')
+            return
+        else:
+            print('please type y or n')
+
 
 user_check()
+balance_txfr()
+balance_txfr_again()
+
