@@ -37,13 +37,13 @@ def user_check():
     while username_verified == False:
         if username_check == user_one['username']:
             username_verified = True
-            #sleep(1)
+            sleep(1)
             password_check = input('please enter your password   ')
             print(" ")
         elif username_verified == False:
             print('no user found by that name (please remember we are CaSe SeNsItIvE)')
             print(" ")
-            #sleep(1)
+            sleep(1)
             username_check = input("please enter your username   ")
             print(" ")
     
@@ -52,19 +52,19 @@ def user_check():
             password_verified = True
             print(user_one['Full_name'])
             print(" ")
-            #sleep(1)
+            sleep(1)
             print(user_one['account_balance'])
             print(" ")
-            #sleep(1)
+            sleep(1)
             print(user_one['Banks'][0][0]," : ",user_one['Banks'][0][1])
             print(" ")
-            #sleep(1)
+            sleep(1)
             print(user_one['Banks'][1][0]," : " ,user_one['Banks'][1][1])
             print(" ")
         elif password_verified == False:
             print('that answer was bad and you should feel bad')
             print(" ")
-            #sleep(1)
+            sleep(1)
             password_check = input('please enter your password   ')
             print(" ")
 
@@ -112,8 +112,17 @@ def balance_txfr_again():
         else:
             print('please type y or n')
 
+def print_user_info():
+    print(user_one['Full_name'])
+    print(" ")
+    sleep(1)
+    print(user_one['account_balance'])
+    print(" ")
+
+
 
 user_check()
 balance_txfr()
 balance_txfr_again()
+print_user_info()
 
